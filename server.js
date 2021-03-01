@@ -35,13 +35,12 @@ var listener = app.listen(port, function () {
 
 
 app.get('/api/timestamp/:date?', (req, res) => {
-  let date_string = req.params.date;
-  let passedInValue = new Date(date_string);
-  console.log(req);
+  let dateString = req.params.date;
+  let dateNew = new Date(dateString);
 
-  if(passedInValue === 'Invalid Date'){
-    res.json({ error: "Invalid Date" });
+  if(dateNew.toUTCString() === 'Invalid error'){
+    res.json({ error: 'Invalid error' });
   } else {
-    res.json({ unix: passedInValue.getTime(), utc: passedInValue.toUTCString()});
+    res.json({ unix: dateNew.getTime(), utc: dateNew.toUTCString() });
   }
 });
