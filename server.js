@@ -34,8 +34,8 @@ var listener = app.listen(port, function () {
 
 
 
-app.get('/api/timestamp/:date?', (req, res) => {
-  let dateString = req.params;
+app.get('/api/timestamp/:date', (req, res) => {
+  let dateString = req.params.date;
   let dateNew = new Date(dateString);
 
   if(dateNew.toString() === 'Invalid Date'){
